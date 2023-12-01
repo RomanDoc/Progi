@@ -1,3 +1,6 @@
+# from prochnost_betona.interface.test import res_list
+
+
 def str_in_list(number_str: str) -> list:
     """
     Переводит строку значений в список чисел
@@ -21,3 +24,9 @@ def average_list(number_list: list) -> float:
     :return: среднее значение
     """
     return int(round(sum(number_list) / len(number_list)))
+
+
+def int_res(number_str):
+    number_list = str_in_list(number_str)
+    average_number = int(average_list(number_list))
+    return average_number
