@@ -5,8 +5,7 @@ from prochnost_betona.config_data.PROCHNOST import KICK_UP, KICK_DOWN, KICK_SIDE
 from prochnost_betona.utils.num_operations.average_calculation import int_res
 
 
-def kick_up():
-    res = int_res(entry.get())
+def kick_up(res):
     """
     Показывает прочность бетона при ударе вверх
     # :param number: значение удара
@@ -15,15 +14,16 @@ def kick_up():
     """
     if 20 <= res <= 50:
         print('Прочность бетона: {res} Мпа'.format(res=KICK_UP[res]))
-        # return 'Прочность бетона: {res} Мпа'.format(res=KICK_UP[result])
+        return 'Прочность бетона: {res} Мпа'.format(res=KICK_UP[res])
     elif res < 20:
+        print('Прочность бетона меньше 10.3 Мпа')
         return 'Прочность бетона меньше 10.3 Мпа'
     elif res > 50:
+        print('Прочность бетона больше 56.8 Мпа')
         return 'Прочность бетона больше 56.8 Мпа'
 
 
-def kick_down():
-    res = int_res(entry.get)
+def kick_down(res):
     """
     Показывает прочность бетона при ударе вниз
     # :param number: значение удара
@@ -31,15 +31,17 @@ def kick_down():
     :return: возвращает прочность бетона
     """
     if 20 <= res <= 45:
+        print('Прочность бетона: {res} Мпа'.format(res=KICK_DOWN[res]))
         return 'Прочность бетона: {res} Мпа'.format(res=KICK_DOWN[res])
     elif res < 20:
+        print('Прочность бетона меньше 14.9 Мпа')
         return 'Прочность бетона меньше 14.9 Мпа'
     elif res > 45:
+        print('Прочность бетона больше 59.5 Мпа')
         return 'Прочность бетона больше 59.5 Мпа'
 
 
-def kick_side() -> str:
-    res = int_res(entry.get)
+def kick_side(res) -> str:
     """
     Показывает прочность бетона при ударе вбок
     # :param number: значение удара
@@ -47,10 +49,13 @@ def kick_side() -> str:
     :return: возвращает прочность бетона
     """
     if 20 <= res <= 48:
+        print('Прочность бетона: {res} Мпа'.format(res=KICK_SIDE[res]))
         return 'Прочность бетона: {res} Мпа'.format(res=KICK_SIDE[res])
     elif res < 20:
+        print('Прочность бетона меньше 10.3 Мпа')
         return 'Прочность бетона меньше 10.3 Мпа'
     elif res > 45:
+        print('Прочность бетона больше 60 Мпа')
         return 'Прочность бетона больше 60 Мпа'
 
 
@@ -78,13 +83,13 @@ result_str = '22 33 44'
 header_btn = ttk.Label(textvariable=kick)
 header_btn.pack(**position)
 
-up_btn = ttk.Button(text=up, command=kick_up)
+up_btn = ttk.Button(text=up, command=lambda: kick_up(int_res(entry.get())))
 up_btn.pack(**position)
 
-down_btn = ttk.Button(text=down, command=kick_down)
+down_btn = ttk.Button(text=down, command=lambda: kick_down(int_res(entry.get())))
 down_btn.pack(**position)
 
-side_btn = ttk.Button(text=side, command=kick_side)
+side_btn = ttk.Button(text=side, command=lambda: kick_side(int_res(entry.get())))
 side_btn.pack(**position)
 
 # header_res = ttk.Label()
