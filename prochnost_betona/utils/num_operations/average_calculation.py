@@ -27,6 +27,12 @@ def average_list(number_list: list) -> float:
 
 
 def int_res(number_str):
+    """
+    Возвращает среднее значение
+    :param number_str: строка значений
+    :type number_str: str
+    :return: среднее значение
+    """
     number_list = str_in_list(number_str)
     average_number = int(average_list(number_list))
     return average_number
