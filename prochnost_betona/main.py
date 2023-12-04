@@ -1,7 +1,7 @@
 from tkinter import *
 from tkinter import ttk
 
-from prochnost_betona.config_data.PROCHNOST import KICK_UP, KICK_DOWN, KICK_SIDE
+from prochnost_betona.config_data.program_data import KICK_UP, KICK_DOWN, KICK_SIDE, direction_kick
 from prochnost_betona.utils.num_operations.average_calculation import int_res
 
 
@@ -53,9 +53,6 @@ root.geometry("300x400")
 
 position = {"padx": 20, "pady": 6, "anchor": NW}
 
-up = "Вверх"
-down = "Вниз"
-side = "Вбок"
 kick = StringVar(value='Направление удара')
 kick_data = StringVar(value='Введите значения через пробел')
 
@@ -65,18 +62,16 @@ header_data.pack(**position)
 entry = ttk.Entry(width=150)
 entry.pack(**position)
 
-result_str = '22 33 44'
-
 header_btn = ttk.Label(textvariable=kick)
 header_btn.pack(**position)
 
-up_btn = ttk.Button(text=up, command=lambda: kick_up(int_res(entry.get())))
+up_btn = ttk.Button(text=direction_kick[0], command=lambda: kick_up(int_res(entry.get())))
 up_btn.pack(**position)
 
-down_btn = ttk.Button(text=down, command=lambda: kick_down(int_res(entry.get())))
+down_btn = ttk.Button(text=direction_kick[1], command=lambda: kick_down(int_res(entry.get())))
 down_btn.pack(**position)
 
-side_btn = ttk.Button(text=side, command=lambda: kick_side(int_res(entry.get())))
+side_btn = ttk.Button(text=direction_kick[2], command=lambda: kick_side(int_res(entry.get())))
 side_btn.pack(**position)
 
 header_res = ttk.Label()
